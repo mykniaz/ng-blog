@@ -1,13 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+// Libs
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+// Modules
+import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+// Components
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { PostPageComponent } from './post-page/post-page.component';
 import { PostComponent } from './shared/components/post/post.component';
+import { PostPageComponent } from './post-page/post-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { PostComponent } from './shared/components/post/post.component';
     PostComponent
   ],
   imports: [
-    NgbModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
   ],

@@ -1,1 +1,68 @@
-<p>login-page works!</p>
+<div class="row d-flex justify-content-center">
+  <div class="col-6">
+    <form
+      class="card"
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+    >
+      <div class="card-header">
+        Login Form
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 mb-4">
+            <label for="email">Email*</label>
+            <input
+              class="form-control"
+              id="email"
+              type="email"
+              formControlName="email"
+            >
+            <div
+              class="validation text-danger"
+              *ngIf="form.get('email').touched && form.get('email').invalid"
+            >
+              <small *ngIf="form.get('email').errors.email">
+                Email is invalid.
+              </small>
+              <small *ngIf="form.get('email').errors.required">
+                Email is required.
+              </small>
+            </div>
+          </div>
+          <div class="col-12 mb-4">
+            <label for="password">Password*</label>
+            <input
+              class="form-control"
+              id="password"
+              type="password"
+              formControlName="password"
+            >
+            <div
+              class="validation text-danger"
+              *ngIf="form.get('password').touched && form.get('password').invalid"
+            >
+              <small *ngIf="form.get('password').errors.minlength">
+                Password must contain {{ form.get('password').errors.minlength['requiredLength'] }} or more letters.
+              </small>
+              <small *ngIf="form.get('password').errors.required">
+                Password is required.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-content-center">
+          <button
+            class="btn btn-warning"
+            type="button"
+          >Reset</button>
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="form.invalid"
+          >Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
