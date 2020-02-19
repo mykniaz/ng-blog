@@ -1,1 +1,51 @@
-<p>dashboard-page works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="search">
+    </div>
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-12" *ngIf="posts.length; else loading">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Author</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts; index as postIndex">
+          <th scope="row">{{ postIndex + 1}}</th>
+          <td>{{ post.author }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.date | date }}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button
+                type="button"
+                class="btn btn-success"
+                [routerLink]="['/admin', 'post', post.id, 'edit']"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="removePost(post.id)"
+              >
+                Remove
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>
+    loading...
+  </ng-template>
+</div>

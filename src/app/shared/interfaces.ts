@@ -4,7 +4,7 @@ export interface User {
   password: string;
 }
 
-export interface FbAuthRequest extends User{
+export interface FbAuthRequest extends User {
   returnSecureToken?: boolean;
 }
 
@@ -22,4 +22,16 @@ interface FbAuthErrorResponse {
   code: number;
   message: string;
   errors: Array<{message: string, domain: string, reason: string}>;
+}
+
+export interface Post {
+  id?: string;
+  title: string;
+  text: string;
+  author: string;
+  date: Date;
+}
+
+export interface FbCreateResponse {
+  name: string;
 }
