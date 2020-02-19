@@ -29,6 +29,29 @@ export class PostsService {
       ));
   }
 
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.fbDbUrl}/posts/${id}.json`);
+  }
+
+  update({id, ...post}: Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.fbDbUrl}/posts/${id}.json`, post);
+  }
+
+  getById(id: string): Observable<Post> {
+    return this.http.get<Post>(`${environment.fbDbUrl}/posts/${id}.json`)
+      .pipe(map(
+        (post: Post) => {
+          const newPost: Post = {
+            ...post,
+            id,
+            date: new Date(post.date)
+          };
+
+          return newPost;
+        }
+      ));
+  }
+
   getAll(): Observable<Post[]> {
     return this.http.get<{[key: string]: any}>(`${environment.fbDbUrl}/posts.json`)
       .pipe(map(
@@ -36,7 +59,7 @@ export class PostsService {
           return Object.keys(response).map(key => ({
             ...response[key],
             id: key,
-            date: new Date(response[key].date)
+            date: new Date(response[key].date),
           }));
         }
       ));

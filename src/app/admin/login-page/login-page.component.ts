@@ -51,12 +51,7 @@ export class LoginPageComponent implements OnInit {
       password: this.form.value.password,
     };
 
-    console.log('submit', user);
-
-    this.authService.login(user).subscribe((responce) => {
-
-      console.log(responce);
-
+    this.authService.login(user).subscribe(() => {
       this.form.reset();
       this.router.navigate(['/admin', 'dashboard']).then();
       this.isLoading = false;

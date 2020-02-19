@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {Post} from '../../shared/interfaces';
 
 @Pipe({name: 'searchPost'})
-export class SearchPipe implements PipeTransform{
+export class SearchPipe implements PipeTransform {
   transform(posts: Post[], search = ''): Post[] {
     if (!search.trim()) {
       return posts;
@@ -12,10 +12,9 @@ export class SearchPipe implements PipeTransform{
       const normSearch = search.toLocaleLowerCase();
 
       const normTitle = post.title.toLocaleLowerCase();
-      const normText = post.title.toLocaleLowerCase();
-      const normAuthor = post.title.toLocaleLowerCase();
+      const normAuthor = post.author.toLocaleLowerCase();
 
-      return normTitle.includes(normSearch) ||  normText.includes(normSearch) || normAuthor.includes(normSearch);
+      return normTitle.includes(normSearch) || normAuthor.includes(normSearch);
     });
   }
 }
