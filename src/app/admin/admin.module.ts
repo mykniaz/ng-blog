@@ -19,6 +19,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { AlertComponent } from './shared/components/alert/alert.component';
+import {AlertService} from './shared/services/alert.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
     CreatePageComponent,
     AdminLayoutComponent,
     DashboardPageComponent,
+    AlertComponent,
   ],
   imports: [
     FormsModule,
@@ -48,7 +51,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
       },
     ]),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AlertService],
   exports: [RouterModule],
 })
 export class AdminModule {

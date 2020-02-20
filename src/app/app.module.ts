@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Provider } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Modules
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
   useClass: AuthInterceptor,
-}
+};
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MainLayoutComponent,
     HomePageComponent,
     PostPageComponent,
-    PostComponent
+    PostComponent,
   ],
   imports: [
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
