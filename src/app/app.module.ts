@@ -14,6 +14,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 // Interceptors
 import { AuthInterceptor  } from './shared/auth.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -34,6 +36,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
