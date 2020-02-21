@@ -3,7 +3,6 @@ import {AlertService} from '../../services/alert.service';
 import {Subscription} from 'rxjs';
 import {
   trigger,
-  state,
   style,
   animate,
   transition,
@@ -26,7 +25,7 @@ import {
               bottom: '0',
               opacity: '0',
             }),
-            animate('1s ease-out',
+            animate('0.25s ease-out',
               style({
                 right: '3rem',
                 bottom: '3rem',
@@ -43,7 +42,7 @@ import {
               bottom: '3rem',
               opacity: 1
             }),
-            animate('1s ease-in',
+            animate('0.25s ease-in',
               style({
                 right: '3rem',
                 bottom: '0',
@@ -61,6 +60,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
   text = '';
   type = 'success';
+  timeout: number;
 
   alertSub: Subscription;
 
@@ -71,12 +71,18 @@ export class AlertComponent implements OnInit, OnDestroy {
       this.text = alert.text;
       this.type = alert.type;
 
-      const timeout = setTimeout(() => {
-        clearTimeout(timeout);
+      this.timeout = setTimeout(() => {
+        clearTimeout(this.timeout);
         this.text = '';
         this.type = 'success';
       }, this.delay);
     });
+  }
+
+  close() {
+    clearTimeout(this.timeout);
+    this.text = '';
+    this.type = 'success';
   }
 
   ngOnDestroy(): void {

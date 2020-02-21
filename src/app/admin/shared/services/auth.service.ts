@@ -1,6 +1,7 @@
-// Libs
+// RxJs
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, Subject, throwError} from 'rxjs';
+// Angular
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 // Interfaces
@@ -48,7 +49,7 @@ export class AuthService {
     return !!this.token;
   }
 
-  private setToken(response: FbAuthResponse | null) {
+  setToken(response: FbAuthResponse | null) {
     if (response) {
       const expiresDate = new Date(new Date().getTime() + Number(response.expiresIn) * 1000);
 

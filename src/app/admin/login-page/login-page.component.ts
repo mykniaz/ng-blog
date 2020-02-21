@@ -1,4 +1,4 @@
-// Libs
+// Angular
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

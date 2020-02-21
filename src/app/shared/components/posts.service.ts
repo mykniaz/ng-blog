@@ -1,6 +1,7 @@
-// Libs
+// RxJs
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+// Angular
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // Environment
